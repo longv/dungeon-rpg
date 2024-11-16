@@ -18,9 +18,10 @@ private:
 
 	Vector2 direction;
 
+	void flip();
+
 protected:
-	static void
-	_bind_methods();
+	static void _bind_methods();
 
 public:
 	Player();

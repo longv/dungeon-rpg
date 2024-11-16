@@ -49,4 +49,11 @@ void Player::_physics_process(double p_delta) {
 	set_velocity(velocity);
 
 	move_and_slide();
+	flip();
+}
+
+void Player::flip() {
+	if (get_velocity().x != 0) {
+		sprite->set_flip_h(get_velocity().x < 0);
+	}
 }
