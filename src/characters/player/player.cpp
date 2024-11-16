@@ -1,7 +1,9 @@
 #include "player.h"
+#include "constants.h"
 #include "godot_cpp/classes/animation_player.hpp"
 #include "godot_cpp/classes/input.hpp"
 #include "godot_cpp/classes/sprite3d.hpp"
+#include "godot_cpp/variant/string.hpp"
 #include "godot_cpp/variant/utility_functions.hpp"
 #include "godot_cpp/variant/vector2.hpp"
 #include "godot_cpp/variant/vector3.hpp"
@@ -29,15 +31,15 @@ void Player::_ready() {
 
 void Player::_input(const Ref<InputEvent> &p_event) {
 	direction = Input::get_singleton()->get_vector(
-			"MoveLeft",
-			"MoveRight",
-			"MoveForward",
-			"MoveBackward");
+			String(constants::input::MOVE_LEFT),
+			String(constants::input::MOVE_RIGHT),
+			String(constants::input::MOVE_FORWARD),
+			String(constants::input::MOVE_BACKWARD));
 
 	if (direction == Vector2(0, 0)) {
-		animation_player->play("Idle");
+		animation_player->play(String(constants::animation::IDLE));
 	} else {
-		animation_player->play("Move");
+		animation_player->play(String(constants::animation::MOVE));
 	}
 }
 
